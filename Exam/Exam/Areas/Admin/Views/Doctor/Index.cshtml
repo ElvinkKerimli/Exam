@@ -1,0 +1,49 @@
+﻿@using Exam.Models
+@model List<Doctor>
+@{
+	int count = 0;
+}
+<div class="container">
+	<div>
+		<a class="btn btn-primary" asp-action="Create">Create</a>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Description</th>
+				<th scope="col">Profession</th>
+				<th scope="col">ImgUrl</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				count++;
+
+
+				<tr>
+					<th scope="col">@count</th>
+					<th scope="col">@item.Id</th>
+					<th scope="col">@item.Name</th>
+					<th scope="col">@item.Duty.Name</th>
+
+					<td>
+						<div style="width:100px">
+
+							<img width="100%" src="~/assets/Upload/Product/@item.ImgUrl" />
+						</div>
+					</td>
+					<th>
+						<a class="btn btn-secondary" asp-action="Update" asp-route-id="@item.Id">Update</a>
+						<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+					</th>
+				</tr>
+			}
+
+		</tbody>
+	</table>
+</div>
